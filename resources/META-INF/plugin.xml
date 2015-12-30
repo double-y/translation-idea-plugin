@@ -28,6 +28,21 @@
     <depends optional="true" config-file="scala-i18n.xml">com.intellij.properties</depends>
     <depends optional="true" config-file="scala-gradle-integration.xml">org.jetbrains.plugins.gradle</depends>
 
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <applicationService serviceImplementation="com.translate.ideaplugin.config.LanguageConfig"/>
+        <applicationConfigurable instance="com.translate.ideaplugin.config.LanguageConfigurable"></applicationConfigurable>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="Translate" class="com.translate.ideaplugin.TranslatePlugin"
+                text="translate">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl shift T"/>
+        </action>
+    </actions>
+
     <xi:include href="/META-INF/scala-plugin-common.xml" xpointer="xpointer(/idea-plugin/*)"/>
     <xi:include href="/META-INF/SBT.xml" xpointer="xpointer(/idea-plugin/*)"/>
     <xi:include href="/META-INF/HOCON.xml" xpointer="xpointer(/idea-plugin/*)"/>
